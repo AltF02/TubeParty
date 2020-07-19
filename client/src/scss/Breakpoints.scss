@@ -1,0 +1,31 @@
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+  .panelContainer {
+    width: 100% !important;
+  }
+  .videoContainer .ui.placeholder.segment {
+    display: none;
+  }
+  .videoContainer {
+    height: auto !important;
+    width: 100% !important;
+  }
+  .outerContainer {
+    display: block !important;
+  }
+  .joinInnerContainer {
+    width: 50% !important;
+    margin: auto !important;
+  }
+  .search-item-channel-date {
+    display: none;
+  }
+}
+@media (max-width: 960px) {
+  .list-group-item {
+    /* 10px = 2 * LR margin of list-group-item */
+    flex: 0 1 calc(100% / 2 - 10px);
+  }
+}
