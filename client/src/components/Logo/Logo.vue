@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>
-            <span class="primaryColor">STREAM</span>
+            <span class="primaryColor">TUBE</span>
             <span class="secondaryColor">PARTY</span>
         </h1>
     </div>
