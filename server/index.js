@@ -14,7 +14,7 @@ const {
 
 const { getActiveRooms } = require('./rooms.js');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const router = require('./router');
 const app = express();
 const server = http.createServer(app);
@@ -58,6 +58,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('disconnect', () => {
+        console.log("Disconnected")
         const user = removeUser(socket.id);
         if (user) {
             socket.broadcast.to(user.room).emit('message', { user: { name: 'admin' }, text: `${user.name} has left`});

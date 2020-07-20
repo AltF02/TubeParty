@@ -2,6 +2,7 @@
     <div class="videoContainer">
         <YTPlayer
                 ref="YTPlayer"
+                class="vue-player"
                 :log="log"
                 :video-props="videoProps"
                 :send-video-state="sendVideoState"
@@ -17,6 +18,30 @@
         /> -->
         <sui-button v-on:click="pauseVideo">Pause</sui-button>
         <sui-button v-on:click="playVideo">Play</sui-button>
+        <sui-segment>
+            <sui-grid columns="2" stackable textAlign="center">
+                <sui-divider vertical>Or</sui-divider>
+                <sui-grid-row verticalAlign="middle">
+                    <sui-grid-column>
+                        <sui-header icon>
+                            <sui-icon name="search"/>
+                            Search for a video on YouTube
+                        </sui-header>
+                        <sui-button v-on:click="searchInputFocus">Search above!</sui-button>
+                    </sui-grid-column>
+
+                    <sui-grid-column>
+                        <sui-header icon>
+                            <sui-icon name="youtube"/>
+                            Paste a YouTube video link
+                        </sui-header>
+                        <sui-button color="youtube" v-on:click="youtubeWindowOpen">
+                            Open Youtube
+                        </sui-button>
+                    </sui-grid-column>
+                </sui-grid-row>
+            </sui-grid>
+        </sui-segment>
     </div>
 </template>
 
@@ -53,6 +78,12 @@
                 this.$refs.YTPlayer.$refs.youtube.player.playVideo();
             },
 
+            searchInputFocus: function () {
+                document.getElementById("searchInput").focus()
+            },
+            youtubeWindowOpen: function () {
+                window.open('https://youtube.com', '_blank');
+            },
             loadFromQueue: function (queue, sync=false) {
                 let nextVideo = queue.shift();
                 if (nextVideo !== undefined) {
@@ -121,21 +152,56 @@
                 };
             })
             useEffect(() => {
-                const startSyncHandler = (videoProps) => {
+                const startSyncHandler = function (videoProps) {
                     this.$props.updateVideoProps({ ...videoProps });
                     this.$props.modifyVideoState({ ...videoProps });
                 };
-            })
-        },
 
-        events: {
-            'yt-video-paused'() {
-                console.log("yt-video-paused received")
-            }
+                const receiveVideoStateHandler = function ({name, room, eventName, eventParams={}}) {
+                    let props = this.$props
+                    const { seekTime, playbackRate, queue, searchItem, history } = eventParams;
+                    this.$props.updateVideoProps({ receiving: true });
+                    switch (eventName) {
+                        case 'syncPlay':
+                        case 'syncSeek':
+                            props.updateVideoProps({ playing: true, seekTime })
+                            props.modifyVideoState({ playing: true, seekTime })
+                            break;
+                        case 'syncPause':
+                            props.updateVideoProps({ playing: false })
+                            props.modifyVideoState({ playing: false })
+                            break;
+                        case 'syncRateChange':
+                            props.updateVideoProps({ playbackRate })
+                            props.modifyVideoState({ playbackRate })
+                            break;
+                        case 'syncLoad':
+                            props.loadVideo(searchItem, false)
+                            props.updateVideoProps({ history })
+                            break;
+                        case 'syncLoadFromQueue':
+                            props.loadFromQueue(queue);
+                            break;
+                        case 'syncQueue':
+                            props.updateVideoProps({ queue })
+                            break;
+                        default:
+                            console.log(name, room)
+                            break;
+                    }
+                };
+
+                sckt.socket.on("startSync", startSyncHandler);
+                sckt.socket.on("receiveVideoState", receiveVideoStateHandler);
+                return () => {
+                    sckt.socket.off('startSync', startSyncHandler)
+                    sckt.socket.off('receiveVideoState', receiveVideoStateHandler);
+                };
+            }, []);
         }
     }
 </script>
 
 <style scoped>
-
+    @import "Video.css";
 </style>

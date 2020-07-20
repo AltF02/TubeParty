@@ -31,5 +31,5 @@
 </script>
 
 <style scoped>
-
+    @import "YTPlayer.css";
 </style>
