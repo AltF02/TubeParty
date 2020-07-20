@@ -2,5 +2,7 @@
 .idea/
 client/node_modules
 *.css
+*.map
 *.log
 client/dist/
+*.env

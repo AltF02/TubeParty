@@ -11,7 +11,7 @@ const {
     getOtherUserInRoom,
     getUserByName
 } = require('./users.js')
-const { getActiveRooms } = require('./room.js');
+const { getActiveRooms } = require('./rooms.js');
 
 const PORT = process.env.PORT || 5000;
 const router = require('./router');
