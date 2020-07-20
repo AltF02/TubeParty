@@ -3,3 +3,4 @@
 client/node_modules
 *.css
 *.log
+client/dist/
