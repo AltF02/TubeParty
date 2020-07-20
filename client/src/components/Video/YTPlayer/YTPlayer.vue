@@ -1,12 +1,11 @@
 <template>
     <div>
         <youtube
-                video-id="FfZil5wkZ1M"
+                video-id="i20TUj4d8sw"
                 ref="youtube"
                 class="vue-player"
                 @paused="onPause"
         />
-        <button v-on:click="pauseVideo">Pause</button>
     </div>
 </template>
 
@@ -24,11 +23,8 @@
             'loadFromQueue'
         ],
         methods: {
-            pauseVideo: function () {
-                this.$refs.youtube.player.pauseVideo();
-            },
             onPause: function () {
-                console.log("Paused")
+                this.$events.fire('yt-video-paused');
             }
         }
     }
