@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-vue": "^0.11.0",
+    "socket.io-client": "^2.3.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vue-youtube": "^1.4.0"

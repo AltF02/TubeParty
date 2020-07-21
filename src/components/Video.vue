@@ -1,6 +1,14 @@
 <template>
     <div>
+        <youtube
+                :video-id="videoId"
+                ref="youtube"
+                @paused="sendVideoUpdate('pause')"
+                @playing="sendVideoUpdate('play')"
+                @buffering="sendVideoUpdate('buffer')"
+        >
 
+        </youtube>
     </div>
 </template>
 
@@ -11,13 +19,18 @@
         name: "Chat",
         data() {
             return {
+                videoId: "FfZil5wkZ1M",
                 socket: io('localhost:3001')
             }
         },
         methods: {
-            sendMessage(e) {
-                e.preventDefault();
-
+            sendVideoUpdate(state) {
+                
+                switch (state) {
+                    case 'pause':
+                        this.socket.emit('')
+                }
+                
                 this.socket.emit('SEND_MESSAGE', {
                     user: this.user,
                     message: this.message
