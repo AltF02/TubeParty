@@ -6,9 +6,9 @@
                 @paused="sendVideoUpdate('pause')"
                 @playing="sendVideoUpdate('play')"
                 @buffering="sendVideoUpdate('buffer')"
-        >
+        />
+        <sui-button @click="test_socket">Test</sui-button>
 
-        </youtube>
     </div>
 </template>
 
@@ -20,22 +20,25 @@
         data() {
             return {
                 videoId: "FfZil5wkZ1M",
-                socket: io('localhost:3001')
+                socket: io('localhost:3000')
             }
         },
         methods: {
             sendVideoUpdate(state) {
-                
+
                 switch (state) {
                     case 'pause':
                         this.socket.emit('')
                 }
-                
+
                 this.socket.emit('SEND_MESSAGE', {
                     user: this.user,
                     message: this.message
                 });
                 this.message = '';
+            },
+            test_socket () {
+                this.socket.emit('YEET')
             }
         },
         mounted() {
