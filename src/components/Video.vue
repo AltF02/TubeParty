@@ -8,7 +8,6 @@
                 @buffering="sendVideoUpdate('buffer')"
         />
         <sui-button @click="test_socket">Test</sui-button>
-
     </div>
 </template>
 
@@ -28,7 +27,7 @@
 
                 switch (state) {
                     case 'pause':
-                        this.socket.emit('')
+                        this.socket.emit('VIDEO_PAUSED')
                 }
 
                 this.socket.emit('SEND_MESSAGE', {
