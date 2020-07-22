@@ -6,11 +6,10 @@
 
 <script>
     import Video from '../components/Video'
-
     export default {
         name: "Room",
         components: {
-            Video
+            Video,
         }
     }
 </script>

@@ -1,9 +1,9 @@
 .DS_Store
 node_modules
 /dist
-
+/server/python/.idea/
 # local env files
-.env.local
+.env
 .env.*.local
 
 # Log files
