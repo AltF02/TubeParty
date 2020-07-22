@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "server": "nodemon server/app.js",
-    "start": "node server/app.js",
+    "heroku-postbuild": "node server/app.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
