@@ -9,7 +9,7 @@ app.get('/', (req, res) => res.send('This is a socket.io server'))
 
 const server = http.createServer(app);
 const io = socketio(server);
-const PORT = process.env.SERVER_PORT || 3000
+const PORT = process.env.PORT || 3000
 
 io.on('connection', (socket) => {
     console.log(`new connection id: ${socket.id}`);
