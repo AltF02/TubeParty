@@ -20,7 +20,7 @@
         data() {
             return {
                 videoId: "FfZil5wkZ1M",
-                socket: io('localhost:3000')
+                socket: io('https://tube-party.herokuapp.com/')
             }
         },
         methods: {
