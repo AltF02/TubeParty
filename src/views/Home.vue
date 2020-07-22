@@ -70,7 +70,7 @@
     section {
       padding: 0 7%;
       color: #ffffff !important;
-      opacity: 87%;
+      opacity: 0.87;
       h2,
       input {
         margin: 0;
