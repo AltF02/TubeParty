@@ -69,7 +69,7 @@
     transition: 0.2s all;
     section {
       padding: 0 7%;
-      color: #ffffff;
+      color: #ffffff !important;
       opacity: 87%;
       h2,
       input {
