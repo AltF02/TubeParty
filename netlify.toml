@@ -1,6 +1,5 @@
 [[redirects]]
     from="/source"
-    to="https://github.com/DankDumpster/TuberParty"
+    to="https://github.com/DankDumpster/tubeparty"
     status = 200
     force = true
-    headers = {X-From = "Netlify"}
