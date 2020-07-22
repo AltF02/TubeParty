@@ -4,6 +4,8 @@ const app = require('express')();
 
 require('dotenv').config();
 
+app.get('/', (req, res) => res.send('This is a socket.io server'))
+
 const server = http.createServer(app);
 const io = socketio(server);
 const PORT = process.env.SERVER_PORT || 3000
