@@ -1,0 +1,25 @@
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+  .panelContainer {
+    width: 100% !important;
+  }
+  .videoContainer .ui.placeholder.segment {
+    display: none;
+  }
+  .videoContainer {
+    height: auto !important;
+    width: 100% !important;
+  }
+  .outerContainer {
+    display: block !important;
+  }
+  .joinInnerContainer {
+    width: 50% !important;
+    margin: auto !important;
+  }
+  .search-item-channel-date {
+    display: none;
+  }
+}
