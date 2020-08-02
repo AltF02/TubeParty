@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './breakpoints.scss'
 
 import JoinRoom from './views/Join/JoinRoom'
-
+import Room from './views/Room/Room'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Router>
           <Switch>
               <Route path='/' exact component={JoinRoom} />
-              {/* <Route path='/room/:roomName' component={Room}/> */}
+              <Route path='/room/:roomName' component={Room}/>
               <Redirect to='/'/>
           </Switch>
       </Router>
