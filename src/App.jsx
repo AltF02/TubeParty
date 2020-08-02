@@ -3,9 +3,9 @@ import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css';
-import './components/breakpoints.scss'
+import './breakpoints.scss'
 
-import JoinRoom from './components/Join/JoinRoom'
+import JoinRoom from './views/Join/JoinRoom'
 
 
 function App() {
